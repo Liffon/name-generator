@@ -23,7 +23,7 @@ class FrequencyCounter(dict):
 					weight = float(row[1])
 				else:
 					weight = 1.0
-				firstnames[row[0].lower()] += float(row[1])
+				firstnames[row[0].lower()] += weight * float(row[1])
 
 	def normalize(self):
 		p = 0
@@ -41,7 +41,8 @@ firstnames = FrequencyCounter()
 
 #firstnames.addEntriesFromFile('dist.male.first.txt')
 #firstnames.addEntriesFromFile('dist.female.first.txt')
-firstnames.addEntriesFromFile('100vanligastemansnamn.txt.csv')
+firstnames.addEntriesFromFile('swedish-male-firstnames.csv')
+firstnames.addEntriesFromFile('swedish-female-firstnames.csv')
 
 for name, frequency in firstnames.items():
 	for idx in range(len(name) - 2):
