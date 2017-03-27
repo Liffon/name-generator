@@ -19,7 +19,7 @@ class FrequencyCounter(dict):
 		return 0
 
 	# Expected file format:
-	# <name> <a number of spaces> <relative frequency>
+	# <name> <at least one space> <relative frequency>
 	def addEntriesFromFile(self, filename, weight=1):
 		with open(filename, 'r') as f:
 			reader = csv.reader(f, delimiter=' ', skipinitialspace=True)
@@ -28,7 +28,7 @@ class FrequencyCounter(dict):
 					weight = float(row[1])
 				else:
 					weight = 1.0
-				firstnames[row[0].lower()] += weight * float(row[1])
+				self[row[0].lower()] += weight * float(row[1])
 
 	def normalize(self):
 		p = 0
