@@ -72,11 +72,11 @@ def nextLetter(name):
 		if not lastletter in nextletters:
 			nextletters[lastletter] = FrequencyCounter()
 			for digram in digrams:
-				first = digram[0]
-				second = digram[1]
-				if first == lastletter:
-					nextletters[lastletter][second] = \
-						digrams[digram] / letters[first]
+				previous = digram[0]
+				current = digram[1]
+				if previous == lastletter:
+					nextletters[lastletter][current] = \
+						digrams[digram] / letters[previous]
 			nextletters[lastletter].normalize()
 
 		candidates = list(nextletters[lastletter].keys())

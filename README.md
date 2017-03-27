@@ -18,3 +18,31 @@ The data included in the repository is from [The United States Census Bureau](ht
 ## Requirements
 
 Numpy is needed to run.
+
+## Usage
+
+`namegenerator.py` takes two optional arguments:
+
+1. The number of names to be generated (default 1)
+2. The "seed" that every generated name starts with
+
+If run without arguments, it simply prints one generated name and exits.
+
+### Example
+
+```
+$ ./namegenerator.py 
+Erinde
+$ ./namegenerator.py 5
+Enn
+Joll
+Andr
+Rikandelisp
+Culoa
+$ ./namegenerator.py 5 Er
+Erofann
+Ergn
+Erimicus
+Ericilikal
+Erisol
+```
