@@ -6,7 +6,7 @@ Why? Because it's pretty hilarious.
 
 ## Requirements
 
-Numpy is needed to run.
+Python 2 or 3 (the latter is recommended) and Numpy is needed to run.
 
 ## Usage
 
@@ -48,3 +48,8 @@ Bob     1.8
 
 The data included in the repository is from Statistics Sweden ([Statistiska Centralbyrån](http://www.statistikdatabasen.scb.se/pxweb/en/), some data-mangling done by me) and [The United States Census Bureau](https://www.census.gov/topics/population/genealogy/data/1990_census/1990_census_namefiles.html)
 (the files are taken as-is from that link).
+
+## Known issues
+
+If running under Python 2, non-ASCII characters are not handled properly.
+As far as I can tell, it works fine under Python 3.
