@@ -60,7 +60,7 @@ nextletters = dict()
 
 names = []
 while len(names) < numberOfNames:
-	name = numpy.random.choice(startletters.keys(), p=startletters.values())
+	name = numpy.random.choice(list(startletters.keys()), p=list(startletters.values()))
 	while not name.endswith(' '):
 		lastletter = name[-1]
 		if not lastletter in nextletters:
@@ -73,7 +73,7 @@ while len(names) < numberOfNames:
 						digrams[digram] / letters[first]
 			nextletters[lastletter].normalize()
 
-		name += numpy.random.choice(nextletters[lastletter].keys(), p=nextletters[lastletter].values())
+		name += numpy.random.choice(list(nextletters[lastletter].keys()), p=list(nextletters[lastletter].values()))
 
 	if len(name) > 3:
 		names.append(name[:-1].capitalize())
