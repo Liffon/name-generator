@@ -4,17 +4,6 @@ This is a name generator that uses word lists of common names to generate new on
 
 Why? Because it's pretty hilarious.
 
-## Expected file format
-
-The file format is a space-separated file, with names in the first column and relative frequency in the second, for example
-```
-Alice   2.1
-Bob     1.8
-```
-
-The data included in the repository is from [The United States Census Bureau](https://www.census.gov/topics/population/genealogy/data/1990_census/1990_census_namefiles.html)
-(the files are taken as-is from that link) and Statistics Sweden ([Statistiska Centralbyrån](http://www.statistikdatabasen.scb.se/pxweb/en/)).
-
 ## Requirements
 
 Numpy is needed to run.
@@ -46,3 +35,16 @@ Erimicus
 Ericilikal
 Erisol
 ```
+
+## File format
+
+By default, the files `swedish-female-firstnames.csv` and `swedish-female-firstnames.csv` are used as input.
+
+The files are space-separated, with names in the first column and relative frequency in the second, for example
+```
+Alice   2.1
+Bob     1.8
+```
+
+The data included in the repository is from Statistics Sweden ([Statistiska Centralbyrån](http://www.statistikdatabasen.scb.se/pxweb/en/), some data-mangling done by me) and [The United States Census Bureau](https://www.census.gov/topics/population/genealogy/data/1990_census/1990_census_namefiles.html)
+(the files are taken as-is from that link).
