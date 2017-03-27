@@ -14,3 +14,7 @@ Bob     1.8
 
 The data included in the repository is from [The United States Census Bureau](https://www.census.gov/topics/population/genealogy/data/1990_census/1990_census_namefiles.html)
 (the files are taken as-is from that link) and Statistics Sweden ([Statistiska Centralbyrån](http://www.statistikdatabasen.scb.se/pxweb/en/)).
+
+## Requirements
+
+Numpy is needed to run.
