@@ -1,13 +1,18 @@
+#!/usr/bin/env python
+
 import csv
 import numpy.random
 import argparse
 
 parser = argparse.ArgumentParser(description='Generate names.')
-parser.add_argument('numberOfNames', metavar='N', type=int,
+parser.add_argument('numberOfNames', metavar='n', type=int,
 	nargs='?', default=1, help='Number of names to generate (defaults to 1)')
+parser.add_argument('nameSeed', metavar='seed',
+	nargs='?', default='', help='Seed that all generated names start with')
 args = parser.parse_args()
 
 numberOfNames = args.numberOfNames
+nameSeed = args.nameSeed
 
 class FrequencyCounter(dict):
 	def __missing__(self, key):
@@ -58,11 +63,12 @@ letters.normalize()
 
 nextletters = dict()
 
-names = []
-while len(names) < numberOfNames:
-	name = numpy.random.choice(list(startletters.keys()), p=list(startletters.values()))
-	while not name.endswith(' '):
-		lastletter = name[-1]
+def nextLetter(name):
+	if name == '':
+		return numpy.random.choice(list(startletters.keys()), p=list(startletters.values()))
+	else:
+		lastletter = name[-1:]
+
 		if not lastletter in nextletters:
 			nextletters[lastletter] = FrequencyCounter()
 			for digram in digrams:
@@ -73,7 +79,16 @@ while len(names) < numberOfNames:
 						digrams[digram] / letters[first]
 			nextletters[lastletter].normalize()
 
-		name += numpy.random.choice(list(nextletters[lastletter].keys()), p=list(nextletters[lastletter].values()))
+		candidates = list(nextletters[lastletter].keys())
+		probabilities = list(nextletters[lastletter].values())
+		return numpy.random.choice(candidates, p=probabilities)
+
+
+names = []
+while len(names) < numberOfNames:
+	name = nameSeed
+	while not name.endswith(' '):
+		name += nextLetter(name)
 
 	if len(name) > 3:
 		names.append(name[:-1].capitalize())
