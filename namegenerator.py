@@ -4,15 +4,6 @@ import csv
 import numpy.random
 import argparse
 
-parser = argparse.ArgumentParser(description='Generate names.')
-parser.add_argument('numberOfNames', metavar='n', type=int,
-	nargs='?', default=1, help='Number of names to generate (defaults to 1)')
-parser.add_argument('nameSeed', metavar='seed',
-	nargs='?', default='', help='Seed that all generated names start with')
-args = parser.parse_args()
-
-numberOfNames = args.numberOfNames
-nameSeed = args.nameSeed
 
 class FrequencyCounter(dict):
 	def __missing__(self, key):
@@ -85,7 +76,6 @@ def nextLetter(name):
 
 
 def generate(number_of_names=1, prefix=''):
-    print(prefix)
     names = []
     while len(names) < number_of_names:
         name = prefix
@@ -101,7 +91,14 @@ def generate(number_of_names=1, prefix=''):
 
 
 def main():
-    names = generate(numberOfNames, nameSeed)
+    parser = argparse.ArgumentParser(description='Generate names.')
+    parser.add_argument('numberOfNames', metavar='n', type=int,
+                nargs='?', default=1, help='Number of names to generate (defaults to 1)')
+    parser.add_argument('nameSeed', metavar='seed',
+                nargs='?', default='', help='Seed that all generated names start with')
+    args = parser.parse_args()
+
+    names = generate(args.numberOfNames, args.nameSeed)
     for name in names:
         print(name)
 
