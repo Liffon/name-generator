@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import csv
 import numpy.random
@@ -84,14 +84,27 @@ def nextLetter(name):
 		return numpy.random.choice(candidates, p=probabilities)
 
 
-names = []
-while len(names) < numberOfNames:
-	name = nameSeed
-	while not name.endswith(' '):
-		name += nextLetter(name)
+def generate(number_of_names=1, prefix=''):
+    print(prefix)
+    names = []
+    while len(names) < number_of_names:
+        name = prefix
+        while not name.endswith(' '):
+            name += nextLetter(name)
 
-	if len(name) > 3:
-		names.append(name[:-1].capitalize())
+        if len(name) > 3:
+            names.append(name[:-1].capitalize())
+    if number_of_names == 1:
+        return names[0]
+    else:
+        return names
 
-for name in names:
-	print(name)
+
+def main():
+    names = generate(numberOfNames, nameSeed)
+    for name in names:
+        print(name)
+
+
+if __name__ == '__main__':
+    main()
