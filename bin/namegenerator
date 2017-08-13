@@ -1,0 +1,20 @@
+#!/usr/bin/env python3
+import argparse, namegenerator
+
+def main():
+    parser = argparse.ArgumentParser(description='Generate names.')
+    parser.add_argument('numberOfNames', metavar='n', type=int,
+                        nargs='?', default=1, help='Number of names to generate (defaults to 1)')
+    parser.add_argument('nameSeed', metavar='seed',
+                        nargs='?', default='', help='Seed that all generated names start with')
+    args = parser.parse_args()
+
+    namegenerator.init()
+
+    for name in range(args.numberOfNames):
+        name = namegenerator.generate(args.nameSeed)
+        print(name)
+
+
+if __name__ == '__main__':
+    main()
